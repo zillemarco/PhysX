@@ -1,0 +1,8 @@
+physx/compiler/*
+!physx/compiler/public
+
+physx/bin/*
+
+physx/include/PxConfig.h
+
+physx/install/*
