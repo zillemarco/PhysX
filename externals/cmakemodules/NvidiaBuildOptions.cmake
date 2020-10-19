@@ -1,6 +1,6 @@
 # Define the options up front
 
-OPTION(NV_APPEND_CONFIG_NAME "Append config (DEBUG, CHECKED, PROFILE or '' for release) to outputted binaries." OFF)
+OPTION(NV_APPEND_CONFIG_NAME "Append config (.d, .c, .p or '' for release) to outputted binaries." OFF)
 OPTION(NV_USE_GAMEWORKS_OUTPUT_DIRS "Use new GameWorks folder structure for binary output." ON)
 OPTION(NV_USE_STATIC_WINCRT "Use the statically linked windows CRT" OFF)
 OPTION(NV_USE_DEBUG_WINCRT "Use the debug version of the CRT" OFF)
@@ -196,9 +196,9 @@ ELSE()
 ENDIF()
 
 IF(NV_APPEND_CONFIG_NAME)
-	SET(CMAKE_DEBUG_POSTFIX   "DEBUG_${LIBPATH_SUFFIX}")
-	SET(CMAKE_PROFILE_POSTFIX "PROFILE_${LIBPATH_SUFFIX}")
-	SET(CMAKE_CHECKED_POSTFIX "CHECKED_${LIBPATH_SUFFIX}")
+	SET(CMAKE_DEBUG_POSTFIX   "_${LIBPATH_SUFFIX}.d")
+	SET(CMAKE_PROFILE_POSTFIX "_${LIBPATH_SUFFIX}.p")
+	SET(CMAKE_CHECKED_POSTFIX "_${LIBPATH_SUFFIX}.c")
 	SET(CMAKE_RELEASE_POSTFIX "_${LIBPATH_SUFFIX}")
 ELSE()
 	IF (DEFINED PX_OUTPUT_ARCH)  # platforms with fixed arch like ps4 dont need to have arch defined, then dont add bitness
